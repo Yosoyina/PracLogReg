@@ -18,7 +18,7 @@ class LoginController extends Controller
     {
         // Valida que se haya enviado un nombre de usuario válido y una contraseña
         $credentials = $request->validate([
-            'username' => 'required|username',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
