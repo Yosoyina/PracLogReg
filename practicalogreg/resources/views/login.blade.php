@@ -16,8 +16,8 @@
         @csrf
         
         <div>
-            <label>Email</label>
-            <input type="email" name="email" value="{{ old('email') }}" required>
+            <label>Username</label>
+            <input type="text" name="username" value="{{ old('username') }}" required>
         </div>
         
         <div>

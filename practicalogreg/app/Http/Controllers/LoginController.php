@@ -16,9 +16,9 @@ class LoginController extends Controller
     // Procesa el envío del formulario de inicio de sesión
     public function store(Request $request)
     {
-        // Valida que se haya enviado un email válido y una contraseña
+        // Valida que se haya enviado un nombre de usuario válido y una contraseña
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'username' => 'required|username',
             'password' => 'required'
         ]);
 
@@ -29,7 +29,7 @@ class LoginController extends Controller
         }
 
         // Si la autenticación falla, retorna al formulario con un mensaje de error
-        return back()->withErrors(['email' => 'Credenciales incorrectas']);
+        return back()->withErrors(['username' => 'Credenciales incorrectas']);
     }
 
     // Cierra la sesión del usuario autentificado
