@@ -45,15 +45,7 @@
             <label>Confirmar Contraseña</label>
             <input type="password" name="password_confirmation" required>
         </div>
-        
-        <div>
-            <label>Rol</label>
-            <select name="rol" required>
-                <option value="user">Usuario</option>
-                <option value="admin">Administrador</option>
-            </select>
-            @error('rol')<span>{{ $message }}</span>@enderror
-        </div>
+    
         
         <button type="submit">Registrarse</button>
     </form>

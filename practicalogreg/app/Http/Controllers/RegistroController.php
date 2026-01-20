@@ -12,23 +12,26 @@ class RegistroController extends Controller
 
     public function create()
     {
-        return view('auth.registro');
+        return view('registro');
     }
 
     //Validar los datos del formulario
 
     public function registro(Request $request){
 
-        $user = User::create([
-            'username' => $request->required('username'),
-            'name' => $request->required('name'),
-            'apellidos' => $request->required('apellidos'),
-            'email' => $request->required('email'),
-            'password' => Hash::make($request->required('password')),
+        $validated = $request->validate([
+            'username' => 'required|string|max:255|unique:users',
+            'name' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8|confirmed',
         ]);
+
+        $validated['password'] = Hash::make($validated['password']);
+
+        $user = User::create($validated);
 
         Auth::login($user);
         return redirect()->route('dashboard');
     }
-
 }

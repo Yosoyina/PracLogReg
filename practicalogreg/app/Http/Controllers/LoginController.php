@@ -10,7 +10,7 @@ class LoginController extends Controller
     // Muestra el formulario de inicio de sesión
     public function create()
     {
-        return view('auth.login');
+        return view('login');
     }
 
     // Procesa el envío del formulario de inicio de sesión
