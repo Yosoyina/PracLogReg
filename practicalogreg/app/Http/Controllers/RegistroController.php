@@ -19,7 +19,7 @@ class RegistroController extends Controller
 
     public function registro(Request $request){
 
-        $validated = $request->validate([
+       /* $validated = $request->validate([
             'username' => 'required|string|max:255|unique:users',
             'name' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
@@ -32,6 +32,16 @@ class RegistroController extends Controller
         $user = User::create($validated);
 
         Auth::login($user);
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard'); */
+
+        User::create([
+            'username' => $request->username,
+            'name' => $request->name,
+            'apellidos' => $request->apellidos,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect('/login');
     }
 }
